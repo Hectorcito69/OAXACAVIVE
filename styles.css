@@ -601,7 +601,7 @@ body {
   top: 0; left: 0; width: 100vw; height: 100vh;
   background: 
     linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-    url('assets/foto de fondo escenario.jpg') center center / cover no-repeat;
+    url('foto de fondo escenario.jpg') center center / cover no-repeat;
   z-index: 1;
 }
 
@@ -762,7 +762,7 @@ body {
     top: 0; left: 0; width: 100vw; height: 100%;
     background: 
       linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-      url('assets/fotodeadorno.jpg') center center / cover no-repeat;
+      url('fotodeadorno.jpg') center center / cover no-repeat;
     z-index: 1;
 }
 .sobre-nosotros-contenido {
@@ -845,7 +845,7 @@ body {
     top: 0; left: 0; width: 100vw; height: 100%;
     background: 
       linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-      url('assets/fotoparagaleriachica.jpg') center center / cover no-repeat;
+      url('fotoparagaleriachica.jpg') center center / cover no-repeat;
     z-index: 1;
 }
 .ballet-hero-contenido {
@@ -910,7 +910,7 @@ body {
     top: 0; left: 0; width: 100vw; height: 100%;
     background: 
       linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-      url('assets/foto de fondo escenario.jpg') center center / cover no-repeat;
+      url('foto de fondo escenario.jpg') center center / cover no-repeat;
     z-index: 1;
 }
 .ballet-hero-contenido {
@@ -1164,4 +1164,5 @@ body {
 }
 body {
     padding-top: 80px; /* Para que el contenido no quede debajo del header fijo */
+
 }
