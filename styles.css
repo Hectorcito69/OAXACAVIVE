@@ -82,7 +82,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: 400px; /* Ajusta este valor según lo cerca que lo quieras del video */
+    margin-top: 350px; /* Ajusta este valor según lo cerca que lo quieras del video */
     pointer-events: auto;
 }
 /* Elimina o comenta la otra definición de .hero-content con position: absolute */
@@ -1190,3 +1190,4 @@ body {
     padding-top: 80px; /* Para que el contenido no quede debajo del header fijo */
 
 }
+
