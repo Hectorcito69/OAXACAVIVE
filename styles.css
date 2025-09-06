@@ -82,22 +82,46 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: 350px; /* Ajusta este valor según lo cerca que lo quieras del video */
+    margin-top: 400px; /* Ajusta este valor según lo cerca que lo quieras del video */
     pointer-events: auto;
 }
 /* Elimina o comenta la otra definición de .hero-content con position: absolute */
 .hero-content {
     position: absolute;
 }
-
 .hero-papelpicado {
     width: 100px;
-    margin-bottom: 0px; /* Más pegado al texto */
+    margin-bottom: 10px; /* Más pegado al texto */
     opacity: 0.85;
     pointer-events: none;
 }
+.hero-info-frame {
+    width: 100vw;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0 40px 0;
+}
 
-
+.hero-info-content {
+    width: 100%;
+    max-width: 700px;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 48px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+@media (max-width: 900px) {
+    .hero-info-content {
+        padding: 24px 8px;
+        max-width: 98vw;
+    }
+}
 .overlay {
     position: absolute;
     bottom: 0;
@@ -1190,4 +1214,3 @@ body {
     padding-top: 80px; /* Para que el contenido no quede debajo del header fijo */
 
 }
-
