@@ -1113,7 +1113,7 @@ body {
 .hero-overlay {
     position: absolute;
     top: 0; left: 0; width: 100vw; height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7));
+    background: transparent;
     z-index: 2;
 }
 @media (max-width: 900px) {
