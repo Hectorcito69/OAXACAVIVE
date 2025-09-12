@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-   
 <header class="main-header">
     <div class="logo-container">
         <a href="index.html">
@@ -29,11 +28,9 @@
     <div class="hero-overlay"></div>
 </section>
 <img src="grecascompleto.png" alt="Greca separador" class="eventos-separador">
-<!-- ...después del cierre de </section> del hero... -->
+
 <section class="hero-info-frame">
-    
     <div class="hero-info-content">
-        
         <img src="papelpicado1.png" alt="Adorno papel picado" class="hero-papelpicado">
         <h1 class="hero-title">Un festival para los sentidos</h1>
         <p class="hero-subtitle">
@@ -43,11 +40,6 @@
     </div>
 </section>
 
-
-
-</section>
-   
-    
 <section class="sobre-oaxaca">
     <div class="sobre-oaxaca-contenido">
         <div class="sobre-oaxaca-col sobre-oaxaca-img">
@@ -73,40 +65,55 @@
             <img src="fotogaleriachica4.jpg" alt="Artista Oaxaca">
         </div>
     </div>
-    
 </section>
- <section class="eventos">
+
+<section class="eventos">
     <img src="grecas.png" alt="Greca decorativa" class="eventos-greca">
     <div class="eventos-header">
         <h2>Próximos eventos</h2>
-    </div><!-- ...resto igual... -->
-</section>
-        <div class="eventos-contenido">
-            <!-- Columna 1: Flyer 1 -->
-            
-            <!-- Columna 3: Flyer 2 + Info 2 alineados horizontalmente -->
-            <div class="evento-col evento-col-vertical">
-                <div class="evento-flyer-info-row">
-                    <img src="flyer2.jpeg" alt="Flyer Oaxaca Vive" class="evento-flyer">
-                    <div class="evento-info evento-info-2">
-                        <h3>OAXACA VIVE - Mosaico Multidisciplinario</h3>
-                        <div class="evento-lugar">Teatro Macedonio Alcala</div>
-                        <p>
-                            Oaxaca Vive: Mosaico Multidisciplinario es un espectáculo único que celebra la grandeza cultural de Oaxaca a través de la música, la danza, el teatro y las artes visuales. En un solo escenario, se entrelazan tradiciones ancestrales con propuestas contemporáneas, dando vida a un relato que honra la identidad de un pueblo que resiste y se transforma.
-                        </p>
-                        <div class="evento-fechas">
-                            Viernes 20 de Junio
-                        </div>
-                        
+    </div>
+    <div class="eventos-contenido">
+        <!-- Evento TOUR 2026 -->
+        <div class="evento-col evento-col-vertical">
+            <div class="evento-flyer-info-row">
+                <img src="flyers_page-0001.jpg" alt="Tour Oaxaca Vive 2026" class="evento-flyer">
+                <div class="evento-info evento-info-2">
+                    <h3>OAXACA VIVE - TOUR 2026</h3>
+                    <div class="evento-lugar">Oaxaca, Chicago, Escondido CA, San Francisco CA</div>
+                    <p>
+                        ¡Prepárate para vivir la experiencia Oaxaca Vive en diferentes ciudades! Nuestro mosaico multidisciplinario reúne lo mejor de la música, danza y talento escénico oaxaqueño.<br><br>
+                        <strong>Fechas:</strong><br>
+                        Oaxaca - 2025<br>
+                        Chicago - 2026<br>
+                        Escondido, CA - 2026<br>
+                        San Francisco, CA - 2026
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Evento Mosaico Multidisciplinario -->
+        <div class="evento-col evento-col-vertical">
+            <div class="evento-flyer-info-row">
+                <img src="flyer2.jpeg" alt="Flyer Oaxaca Vive" class="evento-flyer">
+                <div class="evento-info evento-info-2">
+                    <h3>OAXACA VIVE - Mosaico Multidisciplinario</h3>
+                    <div class="evento-lugar">Teatro Macedonio Alcala</div>
+                    <p>
+                        Oaxaca Vive: Mosaico Multidisciplinario es un espectáculo único que celebra la grandeza cultural de Oaxaca a través de la música, la danza, el teatro y las artes visuales. En un solo escenario, se entrelazan tradiciones ancestrales con propuestas contemporáneas, dando vida a un relato que honra la identidad de un pueblo que resiste y se transforma.
+                    </p>
+                    <div class="evento-fechas">
+                        Viernes 20 de Junio
                     </div>
                 </div>
             </div>
         </div>
-        <img src="grecascompleto.png" alt="Greca separador" class="eventos-separador">
-        <div class="eventos-footer">
-            <img src="lagartijasinfondo.png" alt="Lagartija" class="lagartija">
-        </div>
-    </section>
+    </div>
+    <img src="grecascompleto.png" alt="Greca separador" class="eventos-separador">
+    <div class="eventos-footer">
+        <img src="lagartijasinfondo.png" alt="Lagartija" class="lagartija">
+    </div>
+</section>
+
 <section class="galeria">
   <h2>Galería</h2>
   <div class="galeria-principal">
@@ -123,13 +130,10 @@
 <script>
   const principal = document.getElementById('galeria-img-principal');
   const thumbs = document.querySelectorAll('.galeria-thumb');
-
-  
   if (thumbs.length > 0) {
     principal.src = thumbs[0].src;
     thumbs[0].classList.add('selected');
   }
-
   thumbs.forEach(thumb => {
     thumb.addEventListener('click', function() {
       principal.src = this.src;
@@ -138,7 +142,7 @@
     });
   });
 </script>
-<!-- Separador de video con texto -->
+
 <section class="separador-video">
   <div class="separador-video-contenedor">
     <video class="separador-video-bg" src="c1730_DSg0iY28.mp4" autoplay muted loop playsinline></video>
@@ -148,15 +152,12 @@
     </h2>
   </div>
 </section>
+
 <section class="frame-fiesta">
   <div class="frame-fiesta-bg"></div>
-  <!-- ...existing code... -->
-<div class="frame-fiesta-contenido">
+  <div class="frame-fiesta-contenido">
     <h2 class="frame-fiesta-titulo">“Vive la cultura, únete a la fiesta”</h2>
     <a href="https://www.instagram.com/oaxacaviveshow" target="_blank" rel="noopener" class="frame-fiesta-boton">Conócenos</a>
-</div>
-<!-- ...existing code...-->
-    
   </div>
   <div class="frame-fiesta-footer">
     <img src="image-removebg-preview-modified.png" alt="Oaxaca Vive Logo" class="frame-fiesta-logo">
@@ -171,14 +172,7 @@
             <img src="image-removebg-preview (4).png" alt="Twitter">
         </a>
     </div>
-</div>
+  </div>
 </section>
-
 </body>
-
 </html>
-
-
-
-
-
