@@ -507,6 +507,13 @@ body {
   animation: galeriaZoomIn 1.2s cubic-bezier(.4,2,.6,1) 1;
 }
 
+/* Zoom al pasar el cursor sobre la imagen principal */
+.galeria-principal img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 60px rgba(0,0,0,0.45);
+    cursor: zoom-in;
+}
+
 @keyframes galeriaZoomIn {
   0% { transform: scale(1.08); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
@@ -525,7 +532,7 @@ body {
   height: 100px;
   object-fit: cover;
   border-radius: 12px;
-  cursor: pointer;
+    cursor: zoom-in;
   opacity: 0.7;
   transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
   border: 3px solid transparent;
