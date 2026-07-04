@@ -10,7 +10,6 @@ export default defineConfig({
   },
   // Mantiene el SEO/enlaces ya indexados de las URLs .html anteriores
   redirects: {
-    '/index.html': '/',
     '/sobre-nosotros.html': '/sobre-nosotros',
     '/proximas-fechas.html': '/proximas-fechas',
     '/ballet-oaxaca.html': '/colaboradores',
