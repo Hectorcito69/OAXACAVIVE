@@ -1,0 +1,45 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TeamMember from "../components/TeamMember.astro";
+import { cantantes, artistas, equipoEjecutivo } from "../data/equipo.js";
+---
+
+<Layout
+  title="Sobre Nosotros"
+  description="Conozca al talentoso equipo detrás de Oaxaca Vive: cantantes, tenores, orquestas, coreógrafos y directores que dan vida a este show multidisciplinario."
+>
+  <section
+    class="page-hero"
+    style="background-image: url('/images/stage-bg.jpg');"
+  >
+    <div class="page-hero-inner">
+      <h1>Sobre Nosotros</h1>
+      <p>
+        Oaxaca Vive es un colectivo multidisciplinario que celebra la riqueza
+        cultural de Oaxaca a través de la música, la danza, el teatro y las
+        artes visuales.
+      </p>
+    </div>
+  </section>
+
+  <section class="equipo-seccion container">
+    <h2 class="reveal">Cantantes</h2>
+    <div class="equipo-grid">
+      {cantantes.map((persona, i) => <TeamMember img={persona.img} nombre={persona.nombre} rol={persona.rol} index={i} />)}
+    </div>
+  </section>
+
+  <section class="equipo-seccion container">
+    <h2 class="reveal">Artistas</h2>
+    <div class="equipo-grid">
+      {artistas.map((persona, i) => <TeamMember img={persona.img} nombre={persona.nombre} rol={persona.rol} index={i} />)}
+    </div>
+  </section>
+
+  <section class="equipo-seccion container">
+    <h2 class="reveal">Equipo Ejecutivo</h2>
+    <div class="equipo-grid">
+      {equipoEjecutivo.map((persona, i) => <TeamMember img={persona.img} nombre={persona.nombre} rol={persona.rol} index={i} />)}
+    </div>
+  </section>
+</Layout>

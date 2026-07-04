@@ -1,0 +1,33 @@
+---
+import { WHATSAPP_URL } from "../config";
+
+ interface Props {
+  titulo: string;
+  lugar: string;
+  fechas: string;
+  flyer: string;
+  descripcion: string;
+  index?: number;
+}
+
+const { titulo, lugar, fechas, flyer, descripcion, index = 0 } = Astro.props;
+const delayClass = index > 0 ? `reveal-delay-${Math.min(index, 3)}` : "";
+---
+
+<article class:list={["evento-card", "reveal", delayClass]}>
+  <img src={flyer} alt={`Flyer — ${titulo}`} loading="lazy" width="400" height="520" />
+  <div class="evento-info">
+    <h3>{titulo}</h3>
+    <div class="evento-lugar">{lugar}</div>
+    <p>{descripcion}</p>
+    <div class="evento-footer">
+      <div class="evento-fechas">{fechas}</div>
+      <a
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="evento-boleto-btn">Boletos</a
+      >
+    </div>
+  </div>
+</article>

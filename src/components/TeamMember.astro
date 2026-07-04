@@ -1,0 +1,17 @@
+---
+interface Props {
+  img: string;
+  nombre: string;
+  rol: string;
+  index?: number;
+}
+
+const { img, nombre, rol, index = 0 } = Astro.props;
+const delayClass = index > 0 ? `reveal-delay-${Math.min(index % 3, 3)}` : "";
+---
+
+<div class:list={["equipo-miembro", "reveal", delayClass]}>
+  <img src={img} alt={nombre} loading="lazy" width="96" height="96" />
+  <h3>{nombre}</h3>
+  <p>{rol}</p>
+</div>

@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+import EventCard from "../components/EventCard.astro";
+import { eventos } from "../data/eventos.js";
+---
+
+<Layout
+  title="Próximas Fechas"
+  description="Descubre las próximas fechas de Oaxaca Vive: nuestra gira 2026 en Chicago y California. ¡Compra tus boletos!"
+>
+  <section
+    class="page-hero"
+    style="background-image: url('/images/stage-bg.jpg');"
+  >
+    <div class="page-hero-inner">
+      <h1>Próximas Fechas</h1>
+      <p>¡No te pierdas nuestros próximos eventos y espectáculos!</p>
+    </div>
+  </section>
+
+  <section class="eventos container">
+    <div class="eventos-grid">
+      {eventos.map((evento, i) => <EventCard {...evento} index={i} />)}
+    </div>
+  </section>
+</Layout>

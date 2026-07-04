@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { colaboradores } from "../data/colaboradores.js";
+---
+
+<Layout
+  title="Colaboradores"
+  description="Descubre a los colaboradores que enriquecen Oaxaca Vive: desde el Ballet Oaxaca Vive, Cuauhpanco Teatro y el Taller de Alebrijes, hasta la Academia de Canto Zanda Gundaluu."
+>
+  <section
+    class="page-hero"
+    style="background-image: url('/images/stage-bg.jpg');"
+  >
+    <div class="page-hero-inner">
+      <h1>Nuestros colaboradores</h1>
+      <p>
+        Oaxaca Vive es un colectivo multidisciplinario que celebra la riqueza
+        cultural de Oaxaca a través de la música, la danza, el teatro y las
+        artes visuales.
+      </p>
+    </div>
+  </section>
+
+  {
+    colaboradores.map((c) => (
+      <section
+        class="colaborador-frame"
+        style={`background-image: url('${c.bg}');`}
+      >
+        <div class="colaborador-frame-content reveal">
+          <h2>{c.nombre}</h2>
+          {c.parrafos.map((p) => (
+            <p>{p}</p>
+          ))}
+          {c.galeria.length > 0 && (
+            <div class="colaborador-frame-gallery">
+              {c.galeria.map((img) => (
+                <img src={img.src} alt={img.alt} loading="lazy" width="200" height="150" />
+              ))}
+            </div>
+          )}
+          {c.boton && (
+            <a
+              class="colaborador-boton"
+              href={c.boton.href}
+              target="_blank"
+              rel="noopener"
+            >
+              {c.boton.label}
+            </a>
+          )}
+        </div>
+      </section>
+    ))
+  }
+</Layout>

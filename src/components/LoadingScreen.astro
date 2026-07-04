@@ -1,0 +1,83 @@
+---
+// Componente de pantalla de carga con animaciones
+---
+
+<div id="loading-screen" class="loading-screen">
+  <div class="loading-container">
+    <!-- Logo principal -->
+    <div class="logo-wrapper">
+      <img 
+        src="/images/logo.png" 
+        alt="Oaxaca Vive" 
+        class="loading-logo"
+      />
+      <div class="logo-glow"></div>
+    </div>
+
+    <!-- Animaciones decorativas -->
+    <div class="loading-elements">
+      <div class="element element-1"></div>
+      <div class="element element-2"></div>
+      <div class="element element-3"></div>
+    </div>
+
+    <!-- Líneas animadas -->
+    <div class="loading-lines">
+      <div class="line line-top"></div>
+      <div class="line line-right"></div>
+      <div class="line line-bottom"></div>
+      <div class="line line-left"></div>
+    </div>
+
+    <!-- Texto de carga -->
+    <div class="loading-text">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Ocultar la pantalla de carga cuando la página esté lista
+  document.addEventListener('astro:page-load', () => {
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+      // Esperar un tiempo mínimo para que se vea la animación
+      setTimeout(() => {
+        // Añadir clase para iniciar la animación de salida
+        loadingScreen.classList.add('fade-out');
+        
+        // Remover del DOM después de la animación
+        setTimeout(() => {
+          loadingScreen.remove();
+        }, 600);
+      }, 1200);
+    }
+  });
+
+  // También ocultar cuando el documento esté completamente cargado
+  if (document.readyState === 'complete') {
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+      setTimeout(() => {
+        loadingScreen.classList.add('fade-out');
+        setTimeout(() => {
+          loadingScreen.remove();
+        }, 600);
+      }, 1000);
+    }
+  } else {
+    window.addEventListener('load', () => {
+      const loadingScreen = document.getElementById('loading-screen');
+      if (loadingScreen) {
+        setTimeout(() => {
+          loadingScreen.classList.add('fade-out');
+          setTimeout(() => {
+            loadingScreen.remove();
+          }, 600);
+        }, 800);
+      }
+    });
+  }
+</script>

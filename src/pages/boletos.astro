@@ -1,0 +1,170 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { WHATSAPP_URL } from "../config";
+---
+
+<Layout
+  title="Boletos | Oaxaca Vive"
+  description="Compra tus boletos para Oaxaca Vive - Un espectáculo cultural multidisciplinario que fusiona música, danza, teatro y artes visuales."
+>
+  <div class="boletos-page">
+    <div class="boletos-container container">
+      <div class="boletos-flyer reveal">
+        <img 
+          src="/images/OAXACAVIVEFLYER-ACTUAL.jpg" 
+          alt="Flyer Oaxaca Vive — Guelaguetza"
+          loading="lazy"
+        />
+      </div>
+      
+      <div class="boletos-content">
+        <h1 class="boletos-title reveal">
+          ¡Asegura tu lugar ahora!
+        </h1>
+        
+        <div class="boletos-description reveal reveal-delay-1">
+          <p>
+            No te pierdas esta experiencia inolvidable. Únete a nosotros para celebrar 
+            la riqueza cultural de Oaxaca en un espectáculo que combina tradición, 
+            innovación y talento en un solo escenario.
+          </p>
+          <p>
+            Desde tenores oaxaqueños hasta jazz contemporáneo, pasando por ballet 
+            folclórico y danza aérea, cada acto te llevará a un viaje sensorial 
+            único e irrepetible.
+          </p>
+        </div>
+
+        <div class="boletos-price reveal reveal-delay-2">
+          <span class="precio-label">Precio desde</span>
+          <span class="precio-amount">$$$</span>
+        </div>
+
+        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary boletos-btn reveal reveal-delay-3">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004c-1.425 0-2.791.356-3.995 1.03l-.286.15-.296.048-3.088.52.53 3.053.174.276c-.73 1.304-1.149 2.817-1.149 4.464 0 4.589 3.742 8.331 8.331 8.331 2.211 0 4.291-.854 5.865-2.404 1.573-1.55 2.438-3.623 2.438-5.865 0-4.59-3.742-8.331-8.331-8.331" fill="currentColor"></path>
+          </svg>
+          Comprar Boletos por WhatsApp
+        </a>
+
+        <div class="boletos-trust reveal reveal-delay-3">
+          <p>💬 Escanea el código QR o usa el botón para conectar por WhatsApp</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .boletos-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 60px 20px;
+    background: #000;
+  }
+
+  .boletos-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 900px) {
+    .boletos-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+  }
+
+  .boletos-flyer {
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(212, 175, 55, 0.25);
+  }
+
+  .boletos-flyer img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .boletos-flyer:hover img {
+    transform: scale(1.05);
+  }
+
+  .boletos-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--color-cream);
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-family: var(--font-heading);
+  }
+
+  .boletos-description {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+  }
+
+  .boletos-description p {
+    margin-bottom: 15px;
+  }
+
+  .boletos-price {
+    background: rgba(212, 175, 55, 0.1);
+    border-left: 3px solid var(--color-gold);
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .precio-label {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .precio-amount {
+    color: var(--color-gold);
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: var(--font-heading);
+  }
+
+  .boletos-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    padding: 18px 40px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .boletos-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+  }
+
+  .btn-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .boletos-trust {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    text-align: center;
+    opacity: 0.8;
+  }
+</style>

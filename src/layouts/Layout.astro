@@ -1,0 +1,77 @@
+---
+import { ClientRouter } from "astro:transitions";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import LoadingScreen from "../components/LoadingScreen.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Oaxaca Vive</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/png" href="/icons/favicon.png" />
+
+    <!-- Precarga de fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta property="og:title" content={`${title} | Oaxaca Vive`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+
+    <ClientRouter />
+  </head>
+  <body>
+    <LoadingScreen />
+    <Header />
+    <slot />
+    <Footer />
+    <WhatsAppButton />
+
+    <script>
+      // Anima los elementos .reveal cuando entran al viewport.
+      // Se vuelve a ejecutar tras cada transición de página (astro:page-load)
+      // porque <ClientRouter /> reutiliza el DOM entre navegaciones.
+      function initReveal() {
+        const items = document.querySelectorAll<HTMLElement>(".reveal");
+        if (!("IntersectionObserver" in window)) {
+          items.forEach((el) => el.classList.add("is-visible"));
+          return;
+        }
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+        );
+        items.forEach((el) => observer.observe(el));
+      }
+
+      document.addEventListener("astro:page-load", initReveal);
+    </script>
+  </body>
+</html>

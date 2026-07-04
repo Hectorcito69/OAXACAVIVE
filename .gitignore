@@ -1,0 +1,18 @@
+# Dependencias
+node_modules/
+
+# Build de Astro
+dist/
+.astro/
+
+# Entorno
+.env
+.env.production
+
+# Editor / SO
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+
+# Imágenes originales sin optimizar (opcional: no subirlas al repo)
+originales/

@@ -1,0 +1,19 @@
+{
+  "name": "oaxaca-vive",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "optimizar-imagenes": "node scripts/optimizar-imagenes.mjs"
+  },
+  "dependencies": {
+    "astro": "^6.0.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  }
+}
