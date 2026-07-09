@@ -65,4 +65,30 @@ export const colaboradores = [
     ],
     boton: { href: "https://www.facebook.com/zanda.gundaluu", label: "Ver más" },
   },
+  {
+    nombre: "Danza de la Pluma Cosijoeza",
+    bg: "/images/danza-de-la-pluma.jpg",
+    parrafos: [
+      "Adoptando el nombre del histórico señor principal zapoteco, símbolo de valentía, astucia y poder, el Grupo de Danza de la Pluma \"Cosijoeza\" de la Villa de Zaachila nace con el firme propósito de rescatar la historia y los símbolos comunitarios del olvido.",
+      "Bajo la premisa de que \"los pueblos no danzan su derrota\", el grupo utiliza la danza como una herramienta educativa y de descolonización cultural fuera de las aulas.",
+    ],
+    galeria: [
+      { src: "/images/danza-pluma-1.jpg", alt: "Danza de la Pluma — imagen 1" },
+      { src: "/images/danza-pluma-2.jpg", alt: "Danza de la Pluma — imagen 2" },
+    ],
+    boton: { href: "https://www.facebook.com/share/17rmDfBWtM/", label: "Ver más" },
+  },
+  {
+    nombre: "Taller de Máscaras Juan Carlos & Eva Sánchez",
+    bg: "/images/arte-MASCARAS.webp",
+    parrafos: [
+      "Originarios de San Jerónimo Yahuiche, Oaxaca, los maestros artesanos Juan Carlos y Eva Sánchez se han dedicado desde el año 2012 al arte de la cartonería y a la creación de máscaras de papel de autor",
+      "Su propuesta artística busca preservar y difundir las tradiciones locales, inspirándose profundamente en las celebraciones del Día de Muertos, la cultura popular y las raíces prehispánicas.",
+    ],
+    galeria: [
+      { src: "/images/arte-MASCARAS.jpg", alt: "Taller de Máscaras — imagen 1" },
+      { src: "/images/arte-MASCARAS-1.webp", alt: "Taller de Máscaras — imagen 2" },
+    ],
+    boton: { href: "https://www.instagram.com/arte_jceva/", label: "Ver más" },
+  },
 ];

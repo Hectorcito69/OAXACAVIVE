@@ -8,15 +8,25 @@ import { eventos } from "../data/eventos.js";
   title="Inicio"
   description="Oaxaca Vive es un espectáculo cultural multidisciplinario que fusiona música, danza, teatro y artes visuales. Vive una noche inolvidable celebrando la grandeza del talento oaxaqueño."
 >
-  <section class="hero">
-    <video class="hero-video" autoplay loop muted playsinline>
+  <section class="hero-video-only" aria-label="Video principal Oaxaca Vive">
+    <video
+      id="hero-main-video"
+      class="hero-video"
+      autoplay
+      loop
+      muted
+      playsinline
+      preload="metadata"
+      src="/video/Oaxcpage.mp4"
+    >
       <source src="/video/Oaxcpage.mp4" type="video/mp4" />
     </video>
-    <section class="separador-greca" aria-hidden="true"></section>
-    <div class="hero-overlay"></div>
+  </section>
 
+  <section class="separador-greca" aria-hidden="true"></section>
+
+  <section class="hero-intro">
     <div class="hero-info">
-     
       <img src="/images/papel-picado.png" alt="" class="hero-papelpicado" />
       <h1 class="hero-title">Un festival para los sentidos</h1>
       <p class="hero-subtitle">
@@ -137,6 +147,23 @@ import { eventos } from "../data/eventos.js";
 </Layout>
 
 <script>
+  function initHeroVideo() {
+    const heroVideo = document.getElementById("hero-main-video") as HTMLVideoElement | null;
+    if (!heroVideo) return;
+
+    heroVideo.muted = true;
+    heroVideo.defaultMuted = true;
+    heroVideo.playsInline = true;
+
+    if (heroVideo.currentTime < 0.1) {
+      heroVideo.currentTime = 0.1;
+    }
+
+    heroVideo.play().catch(() => {
+      // Algunos navegadores retrasan el autoplay hasta que haya interacción.
+    });
+  }
+
   function initGaleria() {
     const principal = document.getElementById(
       "galeria-img-principal"
@@ -155,5 +182,6 @@ import { eventos } from "../data/eventos.js";
     });
   }
 
+  document.addEventListener("astro:page-load", initHeroVideo);
   document.addEventListener("astro:page-load", initGaleria);
 </script>
