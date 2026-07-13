@@ -738,6 +738,109 @@ a {
 }
 
 /* =========================================================
+   VIDEO PROMOCIONAL
+   ========================================================= */
+.promo-video-section {
+  position: relative;
+  padding: 28px 0 64px;
+  background:
+    radial-gradient(circle at top, rgba(212, 175, 55, 0.12), transparent 42%),
+    linear-gradient(180deg, rgba(17, 17, 17, 0.88), rgba(0, 0, 0, 0.98));
+}
+
+.promo-video-grid {
+  display: grid;
+  gap: 28px;
+  align-items: center;
+}
+
+.promo-video-copy {
+  max-width: 680px;
+  padding: 0;
+  min-width: 0;
+}
+
+.promo-video-copy h2 {
+  color: var(--color-cream);
+  max-width: 12ch;
+  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.promo-video-lead {
+  font-size: 1.05rem;
+  color: var(--color-cream);
+}
+
+.promo-video-copy p {
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}
+
+.promo-video-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.promo-video-highlights span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--color-cream);
+  font-size: 0.84rem;
+  letter-spacing: 0.04em;
+}
+
+.promo-video-frame {
+  width: min(100%, 360px);
+  margin: 0 auto;
+  padding: 0;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.promo-video-vertical {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 20px;
+  background: #000;
+}
+
+@media (min-width: 900px) {
+  .promo-video-section {
+    padding: 40px 0 80px;
+  }
+
+  .promo-video-grid {
+    grid-template-columns: minmax(0, 620px) minmax(280px, 360px);
+    justify-content: center;
+    gap: 72px;
+  }
+
+  .promo-video-frame {
+    margin: 0;
+  }
+}
+
+@media (max-width: 899px) {
+  .promo-video-copy {
+    padding: 0;
+  }
+
+  .promo-video-copy h2 {
+    max-width: none;
+  }
+
+  .promo-video-frame {
+    width: min(100%, 320px);
+  }
+}
+
+/* =========================================================
    SEPARADOR CON VIDEO
    ========================================================= */
 .separador-video {
