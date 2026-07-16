@@ -8,6 +8,10 @@ import { eventos } from "../data/eventos.js";
   title="Inicio"
   description="Oaxaca Vive es un espectáculo cultural multidisciplinario que fusiona música, danza, teatro y artes visuales. Vive una noche inolvidable celebrando la grandeza del talento oaxaqueño."
 >
+  <Fragment slot="head">
+    <link rel="preload" as="image" href="/images/galeria-4.jpg" fetchpriority="high" />
+  </Fragment>
+
   <section class="hero-video-only" aria-label="Video principal Oaxaca Vive">
     <video
       id="hero-main-video"
@@ -17,6 +21,7 @@ import { eventos } from "../data/eventos.js";
       muted
       playsinline
       preload="metadata"
+      poster="/images/galeria-4.jpg"
       src="/video/Oaxcpage.mp4"
     >
       <source src="/video/Oaxcpage.mp4" type="video/mp4" />
@@ -137,14 +142,14 @@ import { eventos } from "../data/eventos.js";
       <div class="promo-video-frame reveal reveal-delay-1">
         <video
           class="promo-video-vertical"
-          autoplay
-          loop
+          data-defer-video
           muted
           playsinline
-          preload="metadata"
+          preload="none"
+          poster="/images/galeria-1.jpg"
         >
           <source
-            src="/video/OAXACA%20VIVE_PROMOCIONAL%20VERTICAL_01.mp4"
+            data-src="/video/OAXACA%20VIVE_PROMOCIONAL%20VERTICAL_01.mp4"
             type="video/mp4"
           />
         </video>
@@ -153,8 +158,8 @@ import { eventos } from "../data/eventos.js";
   </section>
 
   <section class="separador-video">
-    <video class="separador-video-bg" autoplay loop muted playsinline>
-      <source src="/video/high-teatro.mp4" type="video/mp4" />
+    <video class="separador-video-bg" data-defer-video muted playsinline preload="none" poster="/images/stage-bg.jpg">
+      <source data-src="/video/high-teatro.mp4" type="video/mp4" />
     </video>
     <div class="separador-video-overlay"></div>
     <h2 class="separador-video-texto">
@@ -208,6 +213,8 @@ import { eventos } from "../data/eventos.js";
     thumbs[0].classList.add("selected");
 
     thumbs.forEach((thumb) => {
+      if (thumb.dataset.bound === "1") return;
+      thumb.dataset.bound = "1";
       thumb.addEventListener("click", () => {
         principal.src = thumb.src;
         thumbs.forEach((t) => t.classList.remove("selected"));
@@ -216,6 +223,44 @@ import { eventos } from "../data/eventos.js";
     });
   }
 
+  function initDeferredVideos() {
+    const videos = document.querySelectorAll<HTMLVideoElement>("video[data-defer-video]");
+    if (videos.length === 0) return;
+
+    const loadAndPlay = (video: HTMLVideoElement) => {
+      const source = video.querySelector("source[data-src]") as HTMLSourceElement | null;
+      if (!source || source.src) return;
+
+      source.src = source.dataset.src || "";
+      video.load();
+      video.autoplay = true;
+      video.loop = true;
+      video.play().catch(() => {
+        // Si el navegador bloquea autoplay, el usuario puede iniciarlo al interactuar.
+      });
+    };
+
+    if (!("IntersectionObserver" in window)) {
+      videos.forEach(loadAndPlay);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const video = entry.target as HTMLVideoElement;
+          loadAndPlay(video);
+          observer.unobserve(video);
+        });
+      },
+      { rootMargin: "200px 0px" }
+    );
+
+    videos.forEach((video) => observer.observe(video));
+  }
+
   document.addEventListener("astro:page-load", initHeroVideo);
   document.addEventListener("astro:page-load", initGaleria);
+  document.addEventListener("astro:page-load", initDeferredVideos);
 </script>

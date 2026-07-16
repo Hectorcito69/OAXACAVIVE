@@ -398,6 +398,16 @@ a {
   color: var(--color-text-muted);
 }
 
+/* Mejora de render en móvil: pospone layout/paint de secciones fuera de viewport */
+.eventos,
+.galeria,
+.promo-video-section,
+.separador-video,
+.frame-fiesta {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
 .btn {
   display: inline-block;
   border-radius: 999px;
