@@ -22,35 +22,156 @@ import { colaboradores } from "../data/colaboradores.js";
   </section>
 
   {
-    colaboradores.map((c) => (
-      <section
-        class="colaborador-frame"
-        style={`background-image: url('${c.bg}');`}
-      >
-        <div class="colaborador-frame-content reveal">
-          <h2>{c.nombre}</h2>
-          {c.parrafos.map((p) => (
-            <p>{p}</p>
-          ))}
-          {c.galeria.length > 0 && (
-            <div class="colaborador-frame-gallery">
-              {c.galeria.map((img) => (
-                <img src={img.src} alt={img.alt} loading="lazy" width="200" height="150" />
-              ))}
-            </div>
-          )}
-          {c.boton && (
-            <a
-              class="colaborador-boton"
-              href={c.boton.href}
-              target="_blank"
-              rel="noopener"
-            >
-              {c.boton.label}
-            </a>
-          )}
-        </div>
-      </section>
-    ))
+    colaboradores.map((c) => {
+      const hasVideoGallery = c.galeria.some((item) => item.type === "video");
+
+      return (
+        <section
+          class="colaborador-frame"
+          style={`background-image: url('${c.bg}');`}
+        >
+          <div class:list={["colaborador-frame-content", "reveal", hasVideoGallery && "has-video-gallery"]}>
+            <h2>{c.nombre}</h2>
+            {c.parrafos.map((p) => (
+              <p>{p}</p>
+            ))}
+            {c.galeria.length > 0 && (
+              <div class:list={["colaborador-frame-gallery", hasVideoGallery && "gallery-videos"]}>
+                {c.galeria.map((item, idx) => (
+                  item.type === "video" ? (
+                    <div class="colaborador-media-card colaborador-media-video">
+                      <video
+                        class="colaborador-mini-video"
+                        src={item.src}
+                        muted
+                        loop
+                        autoplay
+                        playsinline
+                        preload="metadata"
+                        aria-label={item.alt || `Video ${idx + 1} de ${c.nombre}`}
+                      ></video>
+                      <button
+                        class="video-audio-toggle"
+                        type="button"
+                        aria-pressed="false"
+                        aria-label="Activar audio"
+                      >
+                        <svg class="icon-audio icon-audio-on" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M3 10v4h4l5 4V6L7 10H3zm12.5 2a4.5 4.5 0 0 0-2.5-4.03v8.06A4.5 4.5 0 0 0 15.5 12zm0-8.5v2.06A8 8 0 0 1 20 12a8 8 0 0 1-4.5 7.44v2.06A10 10 0 0 0 22 12 10 10 0 0 0 15.5 3.5z"/>
+                        </svg>
+                        <svg class="icon-audio icon-audio-off" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M16.5 12a4.5 4.5 0 0 0-1.18-3.03l1.42-1.42A6.5 6.5 0 0 1 18.5 12a6.5 6.5 0 0 1-1.76 4.45l-1.42-1.42A4.5 4.5 0 0 0 16.5 12zM3 10v4h4l5 4V6L7 10H3zm16.71-6.29-1.42-1.42L4.29 16.29l1.42 1.42L19.71 3.71z"/>
+                        </svg>
+                      </button>
+                    </div>
+                  ) : (
+                    <img src={item.src} alt={item.alt} loading="lazy" width="200" height="150" />
+                  )
+                ))}
+              </div>
+            )}
+            {c.boton && (
+              <a
+                class="colaborador-boton"
+                href={c.boton.href}
+                target="_blank"
+                rel="noopener"
+              >
+                {c.boton.label}
+              </a>
+            )}
+          </div>
+        </section>
+      );
+    })
   }
+
+  <section class="orion-showcase container reveal">
+    <div class="orion-glow" aria-hidden="true"></div>
+    <div class="orion-grid">
+      <div class="orion-brand reveal">
+        <img
+          src="/images/logo-orionstudio.png"
+          alt="Orion Studio"
+          class="orion-logo"
+          loading="lazy"
+          width="720"
+          height="240"
+        />
+        <p class="orion-kicker">Desarrollo Web e Ingeniería en Innovación</p>
+      </div>
+
+      <div class="orion-copy reveal reveal-delay-1">
+        <h2>Este sitio fue desarrollado por Orion Studio</h2>
+        <p>
+          Creamos experiencias web rápidas, elegantes y orientadas a resultados.
+          Diseño estratégico, rendimiento y conversión trabajando juntos para
+          impulsar marcas con identidad.
+        </p>
+        <a
+          href="https://www.orionstudiohq.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="orion-cta"
+        >
+          Visitar Orion Studio
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<script>
+  function initColaboradoresVideoAudio() {
+    const cards = document.querySelectorAll<HTMLElement>(".colaborador-media-video");
+    if (!cards.length) return;
+
+    cards.forEach((card) => {
+      const video = card.querySelector<HTMLVideoElement>(".colaborador-mini-video");
+      const button = card.querySelector<HTMLButtonElement>(".video-audio-toggle");
+      if (!video || !button || button.dataset.bound === "1") return;
+
+      const setAspectRatio = () => {
+        if (!video.videoWidth || !video.videoHeight) return;
+        card.style.setProperty("--video-ratio", `${video.videoWidth} / ${video.videoHeight}`);
+      };
+
+      if (video.readyState >= 1) {
+        setAspectRatio();
+      } else {
+        video.addEventListener("loadedmetadata", setAspectRatio, { once: true });
+      }
+
+      button.dataset.bound = "1";
+
+      button.addEventListener("click", () => {
+        const willEnableAudio = video.muted;
+
+        // Mantiene solo un video con audio activo a la vez.
+        document
+          .querySelectorAll<HTMLVideoElement>(".colaborador-mini-video")
+          .forEach((v) => {
+            v.muted = true;
+            const btn = v
+              .closest(".colaborador-media-video")
+              ?.querySelector<HTMLButtonElement>(".video-audio-toggle");
+            if (btn) {
+              btn.setAttribute("aria-pressed", "false");
+              btn.setAttribute("aria-label", "Activar audio");
+            }
+          });
+
+        if (willEnableAudio) {
+          video.muted = false;
+          button.setAttribute("aria-pressed", "true");
+          button.setAttribute("aria-label", "Silenciar video");
+          video.play().catch(() => {
+            // Si el navegador bloquea la reproduccion, dejamos el estado actual.
+          });
+        }
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initColaboradoresVideoAudio);
+</script>

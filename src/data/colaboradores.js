@@ -91,4 +91,35 @@ export const colaboradores = [
     ],
     boton: { href: "https://www.instagram.com/arte_jceva/", label: "Ver más" },
   },
+  {
+    nombre: "Casa De Las Artesanias De Oaxaca",
+    bg: "/images/BACKGROUND-CASADELASARTESANIAS.jpg",
+    parrafos: [
+      "La Casa de las Artesanías de Oaxaca es una cooperativa integrada por 58 maestras y maestros artesanos de las ocho regiones del estado. ",
+      "El objetivo es cuidar, preservar y compartir el legado artesanal de Oaxaca, fortaleciendo a los artesanos mediante un comercio justo que dignifique su trabajo. ",
+    ],
+    galeria: [
+      {
+        type: "video",
+        src: "/video/SANTOTHOMASJALIEZA-CASADELASARTESANIAS.mp4",
+        alt: "Video Santo Tomas Jalieza",
+      },
+      {
+        type: "video",
+        src: "/video/HEREDEROSDELTELAR-CASADELASARTESANIAS.mp4",
+        alt: "Video Herederos del Telar",
+      },
+      {
+        type: "video",
+        src: "/video/SANBARTOLO-CASAELASARTESANIAS.mp4",
+        alt: "Video San Bartolo",
+      },
+      {
+        type: "video",
+        src: "/video/NACIPARATEJER-CASADELASARTESANIAS.mp4",
+        alt: "Video Naci para Tejer",
+      },
+    ],
+    boton: { href: "https://www.instagram.com/casa_arte_oax/", label: "Ver más" },
+  },
 ];
