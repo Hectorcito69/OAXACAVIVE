@@ -401,6 +401,7 @@ a {
 /* Mejora de render en móvil: pospone layout/paint de secciones fuera de viewport */
 .eventos,
 .galeria,
+.instagram-preview,
 .promo-video-section,
 .separador-video,
 .frame-fiesta {
@@ -744,6 +745,97 @@ a {
   .galeria-thumb {
     width: 140px;
     height: 100px;
+  }
+}
+
+/* =========================================================
+   INSTAGRAM PREVIEW
+   ========================================================= */
+.instagram-preview {
+  padding: 20px 20px 56px;
+}
+
+.instagram-preview h2 {
+  margin-bottom: 20px;
+  color: var(--color-cream);
+}
+
+.instagram-preview-card {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.instagram-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  padding: 14px 24px;
+  background: #a50f2d;
+  color: #fff;
+  transition: transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out);
+}
+
+.instagram-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(165, 15, 45, 0.35);
+  background: #ba1235;
+}
+
+.instagram-cta-top {
+  border-radius: 0;
+  margin-bottom: 8px;
+}
+
+.instagram-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.instagram-preview-grid a {
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+}
+
+.instagram-preview-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform var(--dur-med) var(--ease-out),
+    filter var(--dur-fast) var(--ease-out);
+}
+
+.instagram-preview-grid a:hover img {
+  transform: scale(1.05);
+  filter: saturate(1.08);
+}
+
+.instagram-cta-bottom {
+  border-radius: 0;
+  margin-top: 8px;
+  min-width: min(100%, 280px);
+}
+
+@media (max-width: 599px) {
+  .instagram-preview {
+    padding-inline: 20px;
+  }
+
+  .instagram-preview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .instagram-cta {
+    width: 100%;
+    text-align: center;
+    font-size: 0.95rem;
   }
 }
 
